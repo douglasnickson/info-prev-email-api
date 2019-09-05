@@ -10,13 +10,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/enviar-email', (req, res) => {
     res.send("API Iniciada...");
-    enviarEmail(req, res);
+    enviarEmail(req);
 });
 
 app.listen(process.env.PORT || 3000);
 
-async function enviarEmail(req, res) {
-    res.send("Enviando email...");
+async function enviarEmail(req) {
     sgMail.setApiKey(process.env.SENDGRID_KEY);
     const msg = {
         from: `${req.query.name} <${req.query.from}>`,
@@ -27,7 +26,7 @@ async function enviarEmail(req, res) {
     }
     sgMail.send(msg).then((sent) => {
         console.log('Email enviado com sucesso!');
-        console.log(sent);
+        console.log(sent.statusCode);
     }).catch((error) => {
         console.log("Ocorreu um erro ao enviar o email.")
         console.log(error);
