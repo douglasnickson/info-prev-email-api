@@ -13,7 +13,7 @@ app.get('/enviar-email', (req, res) => {
     enviarEmail(req, res);
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 
 async function enviarEmail(req, res) {
     res.send("Enviando email...");
