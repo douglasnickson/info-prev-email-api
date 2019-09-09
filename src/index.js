@@ -35,7 +35,7 @@ async function enviarEmail(req) {
             }
           ],
           "Subject": "MinhaPrevidência - Relatório Aplicativo",
-          "TextPart": "Nova Submissão de Relatório",
+          "TextPart": `${req.query.html}`,
           "HTMLPart": `${req.query.html}`,
           "CustomID": "AppMinhaPrevidencia"
         }
