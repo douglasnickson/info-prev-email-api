@@ -25,7 +25,7 @@ async function enviarEmail(req) {
       "Messages": [
         {
           "From": {
-            "Email": `${req.query.from}`,
+            "Email": `${process.env.EMAIL_FROM}`,
             "Name": `${req.query.name}`
           },
           "To": [
